@@ -1,51 +1,7 @@
-import React from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import './App.css';
-import './react-big-calendar.css';
-
-
-const localizer = momentLocalizer(moment)
-let formats = {
-	timeGutterFormat: 'ha'
-};
-
-function Event({ event }) {
-  return (
-    <span>
-      {event.title+'\nAttendees:  ' + event.attendees}
-    </span>
-  )
-}
-function Toolbar({ event }) {
-  return (
-    <div>{/*Literally nothing*/}</div>
-  )
-}
-
-export default class App extends React.Component {
-
-  constructor(props) {
-    super();
-    this.state = {
-      events:[],
-      combinations:[],
-      results:[],
-    };
-  }
-  
-  handleCreateEvent = ({ start, end }) => {
-    var title = window.prompt('Name of the lecture?');
-    var attendees = window.prompt('Number of Attendees?');
-    if (title !== "" && attendees !== "" && !isNaN(parseInt(attendees)))
-    {
-      attendees = parseInt(attendees);
-      this.setState({events: [...this.state.events, {start, end, title, attendees}]});
-      this.process(this.state.events);
-    }
-  }
-
-  process(events) {
+# MAT 243: Lecture Hall Problem Explanation
+This is simply copy-pasted from the code so that it is easier to read the comments without an IDE or text editor with syntax highlighting. This is all of the relavent code for solving the problem.
+```js
+process(events) {
     // This is there the fun begins.
     // This process() function is what controls everything. It takes one input in the form of a set containing all the events
     // And outputs another set containing only the events that provide the highest attendence without any events overlapping.
@@ -166,70 +122,4 @@ export default class App extends React.Component {
     // This is where we return our result.
     this.setState({results:combinations[highestIndex]})
   }
-  
-
-
-  render() {
-    return (
-      <div className="body">
-        <div className="title">
-          <div className="title-item">
-            <p>MAT 243: Lecture Hall Problem</p>
-          </div>
-        </div>
-        <div className="content">
-          <Calendar
-            selectable
-            localizer={localizer}
-            events={this.state.events}
-            defaultView='day'
-            views={['day']}
-            formats={formats}
-            components={{
-              event: Event,
-              toolbar:Toolbar
-            }}
-            onSelectEvent={event => alert("Lecture: "+event.title+", Attendees: "+event.attendees)}
-            onSelectSlot={this.handleCreateEvent}
-            defaultDate={new Date()}
-            slotPropGetter={slot => ({
-              style: {
-                borderColor: '#282c34',
-              },
-            })}
-          />
-          <p style={{whiteSpace: 'pre-wrap'}}>{"Combinations:\n"+JSON.stringify(this.state.combinations.map((e) => {
-            var arr = []
-            for(var i = 0;i<e.length;i++) {
-              arr.push(e[i].title);
-            }
-            return arr;
-          }))}</p>
-          <Calendar
-            localizer={localizer}
-            events={this.state.results}
-            defaultView='day'
-            views={['day']}
-            formats={formats}
-            components={{
-              event: Event,
-              toolbar:Toolbar
-            }}
-            onSelectEvent={event => alert("Lecture: "+event.title+", Attendees: "+event.attendees)}
-            onSelectSlot={this.handleCreateEvent}
-            defaultDate={new Date()}
-            slotPropGetter={slot => ({
-              style: {
-                borderColor: '#282c34',
-              },
-            })}
-          />
-          </div>
-        
-        <div className="footer">
-          <p>Made for MAT 243: Descrete Mathamatical Structures, Summer B 2019</p>
-        </div>
-      </div>
-    );
-  }
-}
+```
