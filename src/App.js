@@ -83,9 +83,6 @@ export default class App extends React.Component {
 
     // Now we have a new array (set) that contains every possible combination of events, including the null set and every event in the list.
     // This is stored in the variable called `combinations`
-    // For this demonstration, we will save these combinations to a variable that can be read by the website so we can display it in the middle of the page.
-    // This step is usually unnecessary.
-    this.setState({combinations});
     
     //~~~~~~~~~~~~~~~~
     // STEP TWO
@@ -129,6 +126,10 @@ export default class App extends React.Component {
         }
       }
     }
+    
+    // For this demonstration, we will save the combinations to a variable that can be read by the website so we can display it in the middle of the page.
+    // This step is usually unnecessary.
+    this.setState({combinations});
 
     //~~~~~~~~~~~~~~~~
     // STEP THREE
@@ -198,13 +199,22 @@ export default class App extends React.Component {
               },
             })}
           />
-          <p style={{whiteSpace: 'pre-wrap'}}>{"Combinations:\n"+JSON.stringify(this.state.combinations.map((e) => {
-            var arr = []
-            for(var i = 0;i<e.length;i++) {
-              arr.push(e[i].title);
-            }
-            return arr;
-          }))}</p>
+          <div style={{display:'flex',flexDirection:'column',flex:1,height:'100%',justifyContent: 'space-around',alignItems:'center'}}>
+            <p style={{whiteSpace: 'pre-wrap'}}>{"Combinations:\n"+JSON.stringify(this.state.combinations.map((e) => {
+              var arr = []
+              for(var i = 0;i<e.length;i++) {
+                arr.push(e[i].title);
+              }
+              return arr;
+            }))}</p>
+            <p style={{whiteSpace: 'pre-wrap'}}>{"Valid Combinations:\n"+JSON.stringify(this.state.combinations.filter((e) => {return e.valid === false ? false : true}).map((e) => {
+              var arr = []
+              for(var i = 0;i<e.length;i++) {
+                arr.push(e[i].title);
+              }
+              return arr;
+            }))}</p>
+          </div>
           <Calendar
             localizer={localizer}
             events={this.state.results}
