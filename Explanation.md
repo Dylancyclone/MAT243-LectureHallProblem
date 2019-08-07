@@ -1,12 +1,18 @@
-# MAT 243: Lecture Hall Problem Explanation
-This is simply copy-pasted from the code so that it is easier to read the comments without an IDE or text editor with syntax highlighting. This is all of the relavent code for solving the problem.
+## MAT 243: Lecture Hall Problem Explanation
+
+Dylan Lathrum
+
+August 8, 2019
+#
+
+This is simply copy-pasted from the code so that it is easier to read the comments without an IDE or text editor with syntax highlighting. This is all of the relevant code for solving the problem.
 ```js
 process(events) {
   // This is there the fun begins.
   // This process() function is what controls everything. It takes one input in the form of a set containing all the events
   // And outputs another set containing only the events that provide the highest attendence without any events overlapping.
 
-  //INPUT: events
+  // The function takes one input in the form of the variable `events`, which is a set of every event and its details, and outputs another set that contains only the events that satisfy the question requirements.
 
   // The process can be split up into three parts:
   // 1) Finding every possible combination of events
@@ -124,3 +130,4 @@ process(events) {
   this.setState({results:combinations[highestIndex]})
 }
 ```
+The full code can also be found online at https://github.com/Dylancyclone/MAT243-LectureHallProblem/blob/master/src/App.js#L48

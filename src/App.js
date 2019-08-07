@@ -50,7 +50,7 @@ export default class App extends React.Component {
     // This process() function is what controls everything. It takes one input in the form of a set containing all the events
     // And outputs another set containing only the events that provide the highest attendence without any events overlapping.
 
-    //INPUT: events
+    // The function takes one input in the form of the variable `events`, which is a set of every event and its details, and outputs another set that contains only the events that satisfy the question requirements.
 
     // The process can be split up into three parts:
     // 1) Finding every possible combination of events
@@ -237,7 +237,7 @@ export default class App extends React.Component {
           </div>
         
         <div className="footer">
-          <p>Made for MAT 243: Descrete Mathamatical Structures, Summer B 2019</p>
+          <p>Made for MAT 243: Descrete Mathematical Structures, Summer B 2019</p>
         </div>
       </div>
     );
