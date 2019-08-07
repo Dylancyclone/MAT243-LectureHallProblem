@@ -5,7 +5,11 @@ Dylan Lathrum
 August 8, 2019
 # 
 
-This is simply copy-pasted from the code so that it is easier to read the comments without an IDE or text editor with syntax highlighting. This is all of the relevant code for solving the problem.
+Computer Question 5 from Chapter 8 (page 569) of the class textbook reads:
+
+>"Given a set of *n* talks, their start and end times, and the number of attendees at each talk, use dynamic programming to schedule a subset of these talks in a single lecture hall to maximize total attendance."
+
+The following code is copy-pasted from the program I wrote so that it is easier to read without syntax highlighting. This is all of the relevant code for solving the problem.
 ```js
 process(events) {
   // This is there the fun begins.
