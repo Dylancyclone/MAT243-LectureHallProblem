@@ -46,7 +46,7 @@ export default class App extends React.Component {
   }
 
   process(events) {
-    // This is there the fun begins.
+    // This is where the fun begins.
     // This process() function is what controls everything. It takes one input in the form of a set containing all the events
     // And outputs another set containing only the events that provide the highest attendence without any events overlapping.
 
